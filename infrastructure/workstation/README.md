@@ -8,13 +8,13 @@ The goal is to create a **lightweight 3-node workstation** using Multipass to si
 
 # 📋 Prerequisites
 
-Before running the deployment script, ensure **Multipass** is installed on your Ubuntu host.
+Before running the deployment scripts, ensure **Multipass** is installed on your Ubuntu host.
 
 ```bash
 sudo snap install multipass
 ```
 
-You can verify the installation with:
+Verify installation:
 
 ```bash
 multipass version
@@ -34,70 +34,142 @@ This architecture provides a **small but realistic multi-node environment** suit
 
 ---
 
-# 🚀 How to Use the Script
+# 🚀 Step 1 — Deploy the Infrastructure
 
-The `setup_fleet.sh` script automates the creation of the nodes and performs basic safety checks.
+The `setup_fleet.sh` script automatically creates the three nodes.
 
-### 1. Set Script Permission
+### Set script permissions
 
 ```bash
 chmod +x setup_fleet.sh
 ```
 
-### 2. Execute the Script
+### Run the deployment
 
 ```bash
 ./setup_fleet.sh
 ```
 
-The script will automatically deploy the nodes and display their status once deployment is complete.
-
----
-
-# 🛠️ Script Features
-
-The deployment script includes several safety and automation features:
-
-- **Dependency Check**  
-  Verifies that Multipass is installed before attempting deployment.
-
-- **Safety Flags**  
-  Uses `set -e` and `set -o pipefail` to ensure the script stops if errors occur.
-
-- **Automation Loop**  
-  Uses a loop to deploy multiple nodes efficiently.
-
-- **Verification Output**  
-  Displays the node list after deployment to confirm successful creation.
-
----
-
-# 🔍 Verification
-
-After running the script, you can verify the nodes manually using:
+After execution, verify the nodes:
 
 ```bash
 multipass list
 ```
 
-This will display the **node name, state, IP address, and resource allocation**.
+Expected output:
+
+```
+control-node
+web-node
+log-node
+```
+
+---
+
+# 🤝 Step 2 — Establish SSH Handshake
+
+To enable automation, the **control-node must trust the worker nodes**.  
+This is done by installing the control-node's **SSH public key** on the other nodes.
+
+Instead of performing this manually, the process is automated using:
+
+```
+automate_handshake.sh
+```
+
+This script:
+
+1. Retrieves the SSH public key from `control-node`
+2. Installs the key on `web-node`
+3. Installs the key on `log-node`
+4. Configures correct SSH permissions
+
+---
+
+# ▶️ Run the Handshake Script
+
+From the **host machine**, navigate to the workstation directory:
+
+```bash
+cd infrastructure/workstation
+```
+
+Make the script executable:
+
+```bash
+chmod +x automate_handshake.sh
+```
+
+Run the script:
+
+```bash
+./automate_handshake.sh
+```
+
+Expected output:
+
+```
+Fetching public key from control-node...
+Injecting key into web-node...
+Injecting key into log-node...
+All handshakes complete!
+```
+
+---
+
+# 🔍 Verification
+
+Enter the control-node:
+
+```bash
+multipass shell control-node
+```
+
+Test SSH connectivity:
+
+```bash
+ssh ubuntu@web-node
+```
+
+```bash
+ssh ubuntu@log-node
+```
+
+Successful login **without password prompts** confirms the handshake was successful.
+
+---
+
+# 🛠️ Script Features
+
+### setup_fleet.sh
+
+- Dependency check for Multipass
+- Automated node creation
+- Resource allocation
+- Deployment verification
+
+### automate_handshake.sh
+
+- Retrieves SSH key from control-node
+- Injects key into worker nodes
+- Ensures correct `.ssh` permissions
+- Enables passwordless SSH access
 
 ---
 
 # 📁 Related Files
 
-This module works alongside the following files:
-
 ```
-setup_fleet.sh      # Infrastructure deployment script
-journey.md          # High-level project progress log
+setup_fleet.sh
+automate_handshake.sh
+journey.md
 ```
 
 ---
 
 # 🎯 Purpose of This Workstation
 
-The workstation environment is used to:
+This workstation environment is used to:
 
 - Practice Linux system administration
 - Develop shell automation scripts

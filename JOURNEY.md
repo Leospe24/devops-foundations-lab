@@ -7,12 +7,15 @@
 **Detailed Documentation:**  
 See `infrastructure/workstation/README.md` for the full setup process and architecture.
 
-### Progress:
+### Progress
 
-- [x] Defined lab architecture (Control, Web, Log nodes).
-- [x] Configured GitHub repository structure.
-- [x] Created `setup_fleet.sh` to automate node creation.
-- [ ] Establish SSH "Handshake" (Trust) between nodes.
+- [x] Defined lab architecture (Control, Web, Log nodes)
+- [x] Configured GitHub repository structure
+- [x] Created `setup_fleet.sh` to automate node creation
+- [x] Established SSH "Handshake" (Trust) between nodes using `setup_ssh_trust.sh`
 
-**Reflection:**  
-Choosing Multipass over VirtualBox was a key decision to preserve 8GB RAM while maintaining a multi-node simulation.
+### Reflection
+
+Choosing **Multipass** instead of heavier virtualization platforms allowed the lab to run efficiently on an **8GB RAM system** while still simulating a realistic multi-node infrastructure.
+
+The SSH handshake step establishes **passwordless communication from the control-node to worker nodes**, enabling future automation tasks such as remote command execution and configuration management.
