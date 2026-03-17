@@ -1,6 +1,6 @@
 # Journey Log
 
-## Stage 1 — Building the Workstation (Current)
+## Stage 1 — Building the Workstation (Complete)
 
 **Goal:** Establish a 3-node virtualized lab for safe experimentation.
 

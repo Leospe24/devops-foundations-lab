@@ -117,25 +117,54 @@ All handshakes complete!
 
 ---
 
-# 🔍 Verification
+# 🔍 Step 3 — Infrastructure Verification
 
-Enter the control-node:
+After configuring SSH trust between the nodes, it is important to verify that the **control-node can successfully execute commands across the infrastructure**.
 
-```bash
-multipass shell control-node
+A lightweight verification script was created:
+
+```
+verify_infrastructure.sh
 ```
 
-Test SSH connectivity:
+This script performs a **basic infrastructure smoke test** by:
+
+- Connecting to each worker node using SSH
+- Confirming the active user
+- Retrieving the hostname
+- Checking system responsiveness
+
+---
+
+## ▶️ Run the Verification Script
+
+From the repository root:
 
 ```bash
-ssh ubuntu@web-node
+cd infrastructure/tests
+chmod +x verify_infrastructure.sh
+./verify_infrastructure.sh
 ```
 
-```bash
-ssh ubuntu@log-node
-```
+---
 
-Successful login **without password prompts** confirms the handshake was successful.
+## Example Output
+
+```
+🚀 Starting Infrastructure Smoke Test...
+-----------------------------------------------
+Testing connection to: web-node
+  👤 User: ubuntu
+  🏠 Hostname: web-node
+  📅 Date/Time: Tue Mar 17 13:50:00 UTC 2026
+
+Testing connection to: log-node
+  👤 User: ubuntu
+  🏠 Hostname: log-node
+  📅 Date/Time: Tue Mar 17 13:50:05 UTC 2026
+-----------------------------------------------
+Test Complete.
+```
 
 ---
 
@@ -155,6 +184,12 @@ Successful login **without password prompts** confirms the handshake was success
 - Ensures correct `.ssh` permissions
 - Enables passwordless SSH access
 
+### verify_infrastructure.sh
+
+- Performs automated node connectivity testing
+- Executes remote commands across nodes
+- Confirms SSH automation readiness
+
 ---
 
 # 📁 Related Files
@@ -162,6 +197,7 @@ Successful login **without password prompts** confirms the handshake was success
 ```
 setup_fleet.sh
 automate_handshake.sh
+verify_infrastructure.sh
 journey.md
 ```
 
@@ -175,3 +211,5 @@ This workstation environment is used to:
 - Develop shell automation scripts
 - Simulate multi-node infrastructure
 - Build realistic DevOps learning scenarios
+
+This environment acts as the **foundation for the projects located in the `/projects` directory**, where automation, monitoring, and security tools will be developed.
