@@ -20,6 +20,8 @@ The lab environment consists of a **3-node infrastructure**:
 - web-node (simulated application server)
 - log-node (centralized logging & analysis)
 
+**📁 Infrastructure Setup:** [infrastructure/workstation/README.md](./infrastructure/workstation/README.md)
+
 ---
 
 # 🏁 Phase 1 — Infrastructure & Handshake ✅
@@ -43,6 +45,8 @@ Focus areas:
 ### Result
 
 A **fully operational multi-node environment** where the control-node can securely execute commands across all worker nodes.
+
+**📁 Detailed Guide:** [infrastructure/workstation/README.md](./infrastructure/workstation/README.md)
 
 ---
 
@@ -68,6 +72,8 @@ Focus areas:
 ### Result
 
 A **multi-node security scanner** that identifies identity risks, permission vulnerabilities, and generates a structured report with actionable fix commands.
+
+**📁 Project Details:** [projects/01-security-auditor/README.md](./projects/01-security-auditor/README.md)
 
 ---
 
@@ -135,6 +141,16 @@ Focus areas:
 ### Result
 
 A system that **automatically enforces infrastructure consistency across nodes**.
+
+---
+
+# 📚 Related Documentation
+
+| Document                                                       | Purpose                                         |
+| -------------------------------------------------------------- | ----------------------------------------------- |
+| [Journey Log](./journey.md)                                    | Lessons learned and reflections from each phase |
+| [Infrastructure Setup](./infrastructure/workstation/README.md) | Detailed guide for building the 3-node lab      |
+| [Security Auditor](./projects/01-security-auditor/README.md)   | Complete project documentation                  |
 
 ---
 

@@ -10,6 +10,8 @@
 - [x] Configured SSH key-based authentication between nodes
 - [x] Created `setup_fleet.sh` and `automate_handshake.sh`
 
+**📁 Files:** [infrastructure/workstation/](./infrastructure/workstation/)
+
 ### Reflection
 
 Multipass enabled a lightweight lab on 8GB RAM. SSH trust established passwordless automation from control-node to workers, forming the foundation for all future projects.
@@ -26,6 +28,8 @@ Multipass enabled a lightweight lab on 8GB RAM. SSH trust established passwordle
 - [x] Created test files: `.env` (644), `app_config.yml` (666), `id_rsa.bak` (644), `debug.log` (777)
 - [x] Built `security_auditor.sh` to collect user/file data across nodes
 - [x] Built `analyze_audit.py` to classify findings and generate fix commands
+
+**📁 Files:** [projects/01-security-auditor/](./projects/01-security-auditor/)
 
 ### Reflection
 
@@ -50,6 +54,8 @@ Multipass enabled a lightweight lab on 8GB RAM. SSH trust established passwordle
 - Implement log archive and cleanup automation
 - Automate cross-node backup execution
 
+**📁 Location:** [projects/02-resource-sentinel/](./projects/02-resource-sentinel/) _(coming soon)_
+
 ---
 
 ## Stage 4 — Infrastructure Dashboard (Planned)
@@ -62,6 +68,8 @@ Multipass enabled a lightweight lab on 8GB RAM. SSH trust established passwordle
 - Generate HTML dashboard
 - Schedule automated monitoring
 
+**📁 Location:** [projects/03-infrastructure-dashboard/](./projects/03-infrastructure-dashboard/) _(coming soon)_
+
 ---
 
 ## Stage 5 — Infrastructure Enforcer (Planned)
@@ -73,3 +81,15 @@ Multipass enabled a lightweight lab on 8GB RAM. SSH trust established passwordle
 - Verify required packages
 - Check critical services
 - Detect and correct configuration drift
+
+**📁 Location:** [projects/04-infrastructure-enforcer/](./projects/04-infrastructure-enforcer/) _(coming soon)_
+
+---
+
+## 📚 Related Documentation
+
+| Document                                                            | Purpose                                    |
+| ------------------------------------------------------------------- | ------------------------------------------ |
+| [Roadmap](./roadmap.md)                                             | High-level plan and project overview       |
+| [Infrastructure Setup](./infrastructure/workstation/README.md)      | Detailed guide for building the 3-node lab |
+| [Security Auditor README](./projects/01-security-auditor/README.md) | Complete project documentation             |
