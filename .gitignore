@@ -1,5 +1,28 @@
-*.pyc
+# Audit reports (generated files)
+reports/
+*.txt
+
+# Python
 __pycache__/
-.DS_Store
+*.pyc
+*.pyo
+*.pyd
 .venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
 *.log
+
+# Project specific
+*.bak
+*.tmp
